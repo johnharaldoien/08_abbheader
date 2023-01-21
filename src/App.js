@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Hero from './components/Hero/Hero';
+import Card from './components/Card/Card';
+import AppData from './AppData';
 
 function App() {
+  const appDataElements = AppData.map(item => {
+    return <Card 
+              photo={item.photo}
+              name={item.name}
+              score={item.score}
+              votes={item.votes}
+              country={item.country}
+              price={item.price} 
+            />
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Hero />
+
+      <div className='LessonList'>
+        {appDataElements}
+      </div>
     </div>
   );
 }
